@@ -2,9 +2,12 @@ package study;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class StringTest {
     @Test
@@ -26,19 +29,29 @@ public class StringTest {
     }
 
     @Test
-    @DisplayName("요구사항 2")
+    @DisplayName("요구사항 1")
     void subString () {
         String actual = "(1,2)".substring(1, 4);
         assertThat(actual).contains("1,2");
     }
 
     @Test
-    @DisplayName("요구사항 3")
-    void BoundException(){
+    @DisplayName("요구사항 2")
+    void BoundException () {
         String actual = "abc";
         assertThatExceptionOfType(StringIndexOutOfBoundsException.class)
-                .isThrownBy(()->{
-                   actual.charAt(3);
+                .isThrownBy(() -> {
+                    actual.charAt(3);
                 });
+    }
+
+    @Test
+    @DisplayName("요구사항 3")
+    @ParameterizedTest
+    @CsvSource(value = {"1,2,3,4,5"}, delimiter = ',')
+    void toLowerCase_ShouldGenerateTheExpectedLowercaseValue (String input) {
+        String expected = "1,2,3";
+        assertEquals(expected, input);
+
     }
 }

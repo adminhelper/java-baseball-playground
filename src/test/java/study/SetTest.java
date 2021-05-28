@@ -10,13 +10,12 @@ import java.util.HashSet;
 import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.in;
 
 public class SetTest {
     private Set<Integer> numbers;
 
     @BeforeEach
-    void setUp(){
+    void setUp () {
         numbers = new HashSet<>();
         numbers.add(1);
         numbers.add(2);
@@ -26,20 +25,21 @@ public class SetTest {
     // Test Case 구현
     @Test
     @DisplayName("요구사항 1")
-    void size(){
+    void size () {
         assertThat(numbers.size()).isEqualTo(3);
     }
+
     @Test
     @DisplayName("요구사항 2")
-    void contains(){
+    void contains () {
         assertThat(numbers.contains(1)).isTrue();
         assertThat(numbers.contains(2)).isTrue();
         assertThat(numbers.contains(3)).isTrue();
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {1,2,3})
-    void isBlank_ShouldReturnTrueForNullOrBlankStrings(Integer input) {
+    @ValueSource(ints = {1, 2, 3})
+    void isBlank_ShouldReturnTrueForNullOrBlankStrings (Integer input) {
         assertThat(numbers.contains(input)).isTrue();
     }
 }
