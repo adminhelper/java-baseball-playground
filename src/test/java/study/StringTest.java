@@ -44,14 +44,5 @@ public class StringTest {
                     actual.charAt(3);
                 });
     }
-
-    @Test
-    @DisplayName("요구사항 3")
-    @ParameterizedTest
-    @CsvSource(value = {"1,2,3,4,5"}, delimiter = ',')
-    void toLowerCase_ShouldGenerateTheExpectedLowercaseValue (String input) {
-        String expected = "1,2,3";
-        assertEquals(expected, input);
-
-    }
+    
 }
